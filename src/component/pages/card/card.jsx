@@ -4,7 +4,7 @@ import '../pages.styles.scss'
 export default function Card({info}){
     // console.log(info.name)
     return(
-        <div className="card m-2 border-secondary" style={{'max-width': 220 + 'px'}}>
+        <div className="card mx-auto mt-3 border-secondary" style={{'width': 230 + 'px'}}>
         <img style={{'height': 250 + "px"}}
              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5AZPjAW8V7bnKIljk-8bKAZ9T5PEQC4dtAg&usqp=CAU" className="card-img-top" alt="..."/>
         <div className="card-body" >
