@@ -1,13 +1,14 @@
 import React from "react";
 import './footer.styles.scss'
 
-export default function Footer(){
-    return(
+export default function Footer() {
+    return (
         <div className={'container footer'}>
             <div className=" m-4 p-3">
                 <a href="https://maps.visicom.ua/c/30.51025,50.45526,17/f/POIA1KIGKN?lang=uk"
-                className={'nav-link'}
-                target={'_blank'}
+                   className={'nav-link'}
+                   target={'_blank'}
+                   rel={'noreferrer'}
                 >
                     01001, Україна, Київ, вул. Велика Житомирська, 25/2
                 </a>
