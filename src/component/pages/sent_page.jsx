@@ -18,7 +18,7 @@ export default function Sent() {
             body: JSON.stringify(text)
         });
         const content = await rawResponse.json();
-        console.log(content)
+        console.log(content);
     }
 
     const call = async () => {
@@ -28,7 +28,7 @@ export default function Sent() {
     }
 
     useEffect(() => {
-        call();
+       if(!links.length) call();
     }, [])
 
 

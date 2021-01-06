@@ -1,5 +1,6 @@
 import React,{useState} from "react";
 import {Modal,Button} from "react-bootstrap";
+import './modal.styles.scss'
 
 
 export default function Login() {
@@ -10,11 +11,10 @@ export default function Login() {
 
     return (
         <>
-            <Button variant="outline-primary" className = {'mx-auto'} onClick={handleShow}>
+            <Button variant="outline-primary"  onClick={handleShow} className = 'login'>
                 Зайти як адміністратор
             </Button>
-
-            <Modal show={show} onHide={handleClose}>
+            <Modal show={show} onHide={handleClose} className = 'mt-5'>
                 <Modal.Header closeButton>
                 </Modal.Header>
                 <Modal.Body>

@@ -6,24 +6,37 @@ import Card from "./additional_elements/card";
 export default function SearchPage() {
 
     const [employees, setEmployees] = useState([]);
-    const helpArr = useRef([]);
+    const [employeesCopy, setCopy] = useState([]);
 
     const call = async () => {
         const employeesServer = await getEmployees();
         if (employeesServer.length) {
             setEmployees(employeesServer);
-            helpArr.current = employeesServer;
+            setCopy(employeesServer);
         }
     }
 
+    const sort = (TYPE) => {
+        switch (TYPE) {
+            case 'ALPH': {
+                setEmployees(employees.sort((a, b) => {
+                    if (a.name.charAt(0) > b.name.charAt(0)) return 1;
+                    else if (a.name.charAt(0) < b.name.charAt(0)) return -1;
+                    else return 0;
+                }));
+            }
+        }
+    }
+
+
     //TODO refactor when API data is valid
     useEffect(() => {
-       if (!employees.length) call();
+        if (!employees.length) call();
     }, []);
 
     const find = (e) => {
         if (e.length === 0) {
-            setEmployees(helpArr.current)
+            setEmployees(employeesCopy);
             return;
         }
         const temp_arr = [];
@@ -57,7 +70,8 @@ export default function SearchPage() {
                                    aria-describedby="addon-wrapping"/>
 
                             <div className=" btn-group btn-group-md" role="group" aria-label="...">
-                                <button className={'btn btn-secondary'}>За алфавітом</button>
+                                <button className={'btn btn-secondary'} onClick={() => sort("ALPH")}>За алфавітом
+                                </button>
                                 <button className={'btn btn-secondary'}>За Д.Н.</button>
                                 <button className={'btn btn-secondary'}>За віком</button>
 

@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react'
+import React, {useEffect,useState} from 'react'
 import Card from "./additional_elements/card";
 import './pages.styles.scss'
 import {getBirthday, getEmployees} from "../../server_data/rest";
@@ -11,11 +11,12 @@ export default function MainPage() {
 
     const [count, setCount] = useState(0);
     const [info, setInfo] = useState([]);
-    const birth = useRef(true)
+    const [birth,setBirth] = useState(true);
+    const [] = useState(0)
 
     const call = async () => {
         const data = await getBirthday();
-        data.length ? setInfo(data) : birth.current = !birth.current;
+        data.length ? setInfo(data) : setBirth(prev => !prev);
     }
 
     useEffect(() => {
@@ -33,7 +34,7 @@ export default function MainPage() {
                 </h3>
                 <div className={"row"}>
                     <div className={'row mx-auto'}>
-                        {birth.current
+                        {birth
                             ? info.map((item, index) => (
                                 <div className={'m-2'}>
                                     <Card key={index} info={item}/>

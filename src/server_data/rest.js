@@ -1,4 +1,3 @@
-
 export const getBirthday = async () => {
     const serverData = await fetch('/birthday');
     const data = await serverData.json();
@@ -11,8 +10,9 @@ export const getEmployees = async () => {
     return data
 }
 
-export const getLinks = async  () => {
+export const getLinks = async () => {
     const serverData = await fetch('/links');
     const data = await serverData.json()
     return data;
 }
+
