@@ -6,16 +6,21 @@ import {getEmployees} from "../../../server_data/rest";
 export default function Links({links}) {
 
     const [employees, setEmployees] = useState([]);
+    const [branchEmployees, setBranchEmployees] = useState([]);
     const [branch, setBranch] = useState('');
 
     const call = async () => {
         const employeesServer = await getEmployees();
-        setEmployees(employeesServer.filter(item => item.branch === branch));
+        setEmployees(employeesServer);
     }
 
     useEffect(() => {
         call();
-    },[branch]);
+    },[]);
+
+    useEffect(() => {
+        setBranchEmployees(employees.filter(item => item.branch === branch));
+    },[branch])
 
     return (
         <div className={'container'}>
@@ -25,7 +30,7 @@ export default function Links({links}) {
                     </Form.Control>
             </div>
             <div className="bg-gray row justify-content-center">
-                {employees.length ? employees.map((item,index) => <Card info={item} key = {index}/>)
+                {branchEmployees.length ? branchEmployees.map((item,index) => <Card info={item} key={index}/>)
                     : <h3>Виберіть відділення/наразі немає співробітників</h3>}
             </div>
         </div>

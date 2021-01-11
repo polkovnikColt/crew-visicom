@@ -10,10 +10,27 @@
   text-align: center;
 }
 
-.card-width{
+.card{
   width: 300px;
   margin-left: auto;
   margin-right: auto;
+  &:hover{
+    box-shadow: 0 0 10px gray;
+    transition: 0.15s;
+    cursor: pointer;
+  }
+}
+.cross{
+  width: 30px;
+  height: 30px;
+  padding: 1%;
+  margin-left: auto;
+  position: absolute;
+  &:hover{
+    opacity: 0.5;
+    transition: 0.12s;
+    cursor: pointer;
+  }
 }
 
 .name{

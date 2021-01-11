@@ -1,10 +1,12 @@
-import React, {useRef, useState, useEffect} from "react";
+import React, {useContext, useState, useEffect} from "react";
 import {getEmployees} from "../../server_data/rest";
 import Card from "./additional_elements/card";
+import {LoggedContext} from "../../App";
 
 
 export default function SearchPage() {
 
+    const logged = useContext(LoggedContext);
     const [employees, setEmployees] = useState([]);
     const [employeesCopy, setCopy] = useState([]);
 
@@ -27,7 +29,6 @@ export default function SearchPage() {
             }
         }
     }
-
 
     //TODO refactor when API data is valid
     useEffect(() => {
@@ -54,7 +55,7 @@ export default function SearchPage() {
 
     return (
         <div className={'page'}>
-            <div className={'container'}>
+            <div className={'container-fluid'}>
                 <div className={'row'}>
                     <div className={'col-12 mt-3 '}>
                         <div className="input-group ">
@@ -68,7 +69,7 @@ export default function SearchPage() {
                                    className="form-control mx-auto"
                                    aria-label="Username"
                                    aria-describedby="addon-wrapping"/>
-
+                            {logged ? <button className="btn btn-outline-info mx-2">Додати</button> : null}
                             <div className=" btn-group btn-group-md" role="group" aria-label="...">
                                 <button className={'btn btn-secondary'} onClick={() => sort("ALPH")}>За алфавітом
                                 </button>

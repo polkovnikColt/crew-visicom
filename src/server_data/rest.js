@@ -16,3 +16,8 @@ export const getLinks = async () => {
     return data;
 }
 
+export const getAdmins = async () => {
+    const serverData = await fetch('/admins');
+    const data = await serverData.json();
+    return data;
+}

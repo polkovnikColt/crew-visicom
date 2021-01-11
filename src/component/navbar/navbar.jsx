@@ -5,7 +5,7 @@ import Login from "../pages/additional_elements/modal";
 import logo from './../images/compass.svg';
 
 
-export default function Navbar() {
+export default function Navbar({login,unlog}) {
     return (
         <nav className={"nav nav-orig position-sticky"}>
             <div className="row w-100">
@@ -15,7 +15,7 @@ export default function Navbar() {
                 <Link className={"nav-link text-light mt-2"} to="/group">Групи</Link>
                 <Link className={"nav-link text-light mt-2"} to="/send">Розсилки</Link>
                 <Link className={"nav-link text-light mt-2"} to="/document">Документи</Link>
-                <Login />
+                <Login login = {login} unlog ={unlog} />
             </div>
         </nav>
     )
